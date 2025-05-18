@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💍THE END🏅</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+    .foto {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: purple;
+    }
+	.pequeno {
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 ¡Enhorabuena! 🎉</h1>
+  <p>Habéis llegado al final de las pruebas</p>
+  <p>💰 ¡Y habéis conseguido vuestro regalo de boda! 💰</p>
+  <p class="pequeno">(Podéis hacer clic en la página para poneros en sintonía de aquel día 🎶)</p>
+  <p class="foto">Ahora mándanos una foto de esta pantalla a nuestro grupo para saber que habéis llegado hasta aquí 📸</p>
+
+  <!-- Música de boda -->
+<audio id="boda" autoplay loop>
+  <source src="Mendelssohn-wedding-march.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+</audio>
+
+  <script>
+    // Disparar confeti al cargar
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+
+    // Efecto de confeti repetido
+    let duration = 5 * 1000;
+    let end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 }
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 }
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+
+    // Reproducir música en móviles (requiere interacción)
+    document.body.addEventListener('click', () => {
+      const audio = document.getElementById('boda');
+      if (audio.paused) {
+        audio.play();
+      }
+    });
+  </script>
+</body>
+</html>
